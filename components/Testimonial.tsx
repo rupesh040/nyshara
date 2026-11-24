@@ -243,14 +243,15 @@ export default function Testimonial({ data: customData }: TestimonialProps) {
             className="tm-a tm-flank hidden md:block absolute right-0 w-[56px] xl:w-[93px] top-[13.5%] bottom-[13.5%] bg-[#F9EBE3]"
           />
 
-          <div className="absolute inset-y-0 left-0 z-30 w-0 md:w-[56px] xl:w-[93px] flex items-center justify-center pointer-events-none">
+          {/* Desktop/Tablet side navigation arrows */}
+          <div className="hidden md:flex absolute inset-y-0 left-0 z-30 md:w-[56px] xl:w-[93px] items-center justify-center pointer-events-none">
             <ArrowButton
               direction="left"
               label="Previous Testimonial"
               onClick={handlePrev}
             />
           </div>
-          <div className="absolute inset-y-0 right-0 z-30 w-0 md:w-[56px] xl:w-[93px] flex items-center justify-center pointer-events-none">
+          <div className="hidden md:flex absolute inset-y-0 right-0 z-30 md:w-[56px] xl:w-[93px] items-center justify-center pointer-events-none">
             <ArrowButton
               direction="right"
               label="Next Testimonial"
@@ -340,36 +341,58 @@ export default function Testimonial({ data: customData }: TestimonialProps) {
             </div>
           </div>
 
-          <div className="flex items-center justify-center gap-3.5 mt-8 sm:mt-10">
-            {items.map((item, index) => {
-              const isActive = index === currentIndex;
-              return (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => go(index, index > currentIndex ? 1 : -1)}
-                  aria-label={`Go to slide ${index + 1}`}
-                  aria-current={isActive}
-                  className={`relative w-2.5 h-2.5 rounded-full border bg-white transition-colors duration-500 focus:outline-none cursor-pointer ${
-                    isActive
-                      ? "border-[#B76A2E]"
-                      : "border-[#D9A67F] hover:border-[#B76A2E]"
-                  }`}
-                >
-                  <span
-                    className={`absolute -inset-px rounded-full bg-[#B76A2E] transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
-                      isActive ? "scale-100" : "scale-0"
+          {/* Bottom Navigation: On small devices (< md), displays arrows on sides with dots in center. On desktop (>= md), shows dots only */}
+          <div className="flex items-center justify-center gap-5 sm:gap-6 mt-8 sm:mt-10">
+            {/* Small devices (< md): Previous Arrow Button */}
+            <div className="md:hidden flex items-center">
+              <ArrowButton
+                direction="left"
+                label="Previous Testimonial"
+                onClick={handlePrev}
+              />
+            </div>
+
+            {/* Pagination Indicators */}
+            <div className="flex items-center gap-3">
+              {items.map((item, index) => {
+                const isActive = index === currentIndex;
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => go(index, index > currentIndex ? 1 : -1)}
+                    aria-label={`Go to slide ${index + 1}`}
+                    aria-current={isActive}
+                    className={`relative w-2.5 h-2.5 rounded-full border bg-white transition-colors duration-500 focus:outline-none cursor-pointer ${
+                      isActive
+                        ? "border-[#B76A2E]"
+                        : "border-[#D9A67F] hover:border-[#B76A2E]"
                     }`}
-                  />
-                  {isActive && (
+                  >
                     <span
-                      key={currentIndex}
-                      className="tm-a tm-ping absolute -inset-px rounded-full border border-[#B76A2E] pointer-events-none"
+                      className={`absolute -inset-px rounded-full bg-[#B76A2E] transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+                        isActive ? "scale-100" : "scale-0"
+                      }`}
                     />
-                  )}
-                </button>
-              );
-            })}
+                    {isActive && (
+                      <span
+                        key={currentIndex}
+                        className="tm-a tm-ping absolute -inset-px rounded-full border border-[#B76A2E] pointer-events-none"
+                      />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Small devices (< md): Next Arrow Button */}
+            <div className="md:hidden flex items-center">
+              <ArrowButton
+                direction="right"
+                label="Next Testimonial"
+                onClick={handleNext}
+              />
+            </div>
           </div>
         </div>
       </div>
