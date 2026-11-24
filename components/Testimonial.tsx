@@ -189,7 +189,7 @@ export default function Testimonial({ data: customData }: TestimonialProps) {
       id="testimonials"
       className={`tm-root ${
         isLoaded ? "tm-live" : ""
-      } relative w-full bg-white overflow-hidden py-16 sm:py-24 lg:py-28 select-none scroll-mt-20`}
+      } relative w-full bg-white overflow-hidden mx-auto max-w-[1280px] py-16 sm:py-24 lg:py-28 select-none scroll-mt-20`}
     >
       <style>{styles}</style>
 

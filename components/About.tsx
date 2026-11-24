@@ -256,7 +256,7 @@ export default function About({ data: customData }: AboutProps) {
       id="about-us"
       ref={sectionRef}
       data-in={inView ? "true" : "false"}
-      className={`${jost.className} nys-about relative w-full select-none overflow-hidden bg-[#FAF9FB] py-[clamp(3rem,5vw,7rem)] scroll-mt-20`}
+      className={`${jost.className} nys-about relative max-w-[1280px] mx-auto w-full select-none overflow-hidden bg-[#FAF9FB] py-[clamp(3rem,5vw,7rem)] scroll-mt-20`}
     >
       <style dangerouslySetInnerHTML={{ __html: ABOUT_CSS }} />
  
@@ -292,12 +292,12 @@ export default function About({ data: customData }: AboutProps) {
             </div>
  
             <h2
-              className={`${cormorant.className} mb-[clamp(2rem,4vw,5rem)] text-[clamp(2.5rem,6.6vw,8rem)] font-semibold leading-[0.98] tracking-[-0.01em] text-[#101A33]`}
+              className={`${cormorant.className} mb-[clamp(2rem,4vw,5rem)] text-[clamp(1.75rem,3.8vw,4.5rem)] font-semibold leading-[1.05] tracking-[-0.01em] text-[#101A33]`}
             >
               {headingLines.map((line, lineIndex) => (
                 <span
                   key={lineIndex}
-                  className="-mb-[0.24em] -mt-[0.12em] block overflow-hidden pb-[0.24em] pt-[0.12em]"
+                  className="-mb-[0.24em] -mt-[0.12em] block overflow-hidden pb-[0.24em] pt-[0.12em] whitespace-nowrap"
                 >
                   {line.split(" ").map((word, i, words) => {
                     const idx = wordIndex++;

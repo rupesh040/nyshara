@@ -234,13 +234,14 @@ export default function WhyChooseUs({ data: customData }: WhyChooseUsProps) {
       id="why-choose-us"
       ref={sectionRef}
       data-in={inView ? "true" : "false"}
-      className={`${inter.className} nys-w relative w-full select-none overflow-hidden bg-[#FEFDFC] py-[clamp(3rem,5vw,7rem)] scroll-mt-20`}
+      className={`${inter.className} nys-w relative w-full mx-auto max-w-[1280px] select-none overflow-hidden bg-[#FEFDFC] py-[clamp(3rem,5vw,7rem)] scroll-mt-20`}
     >
       <style dangerouslySetInnerHTML={{ __html: WHY_CSS }} />
  
       <div className="mx-auto w-full max-w-[1600px] px-[clamp(1rem,3.5vw,5rem)]">
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[minmax(0,647fr)_minmax(0,729fr)] lg:gap-x-[clamp(1rem,1.75vw,3rem)] lg:gap-y-0">
-          <div className="flex w-full flex-col justify-start">
+          {/* Left column is a size container so the heading scales with its width (cqw) */}
+          <div className="flex w-full flex-col justify-start [container-type:inline-size]">
             <div className="mb-[clamp(1rem,1.7vw,2.5rem)] flex items-center gap-[clamp(0.75rem,2vw,3rem)]">
               <span
                 style={delayVar(100)}
@@ -255,13 +256,14 @@ export default function WhyChooseUs({ data: customData }: WhyChooseUsProps) {
               />
             </div>
  
+            {/* Heading: always exactly two lines (one per headingLine) */}
             <h2
-              className={`${cormorant.className} mb-[clamp(1rem,1.7vw,2.5rem)] text-[clamp(2.25rem,5.2vw,6.5rem)] font-semibold leading-[1.05] tracking-[-0.01em] text-[#0F1B33]`}
+              className={`${cormorant.className} mb-[clamp(1rem,1.7vw,2.5rem)] text-[clamp(1.75rem,9cqw,6.5rem)] font-semibold leading-[1.05] tracking-[-0.01em] text-[#0F1B33]`}
             >
               {headingLines.map((line, lineIndex) => (
                 <span
                   key={lineIndex}
-                  className="-mb-[0.24em] -mt-[0.12em] block overflow-hidden pb-[0.24em] pt-[0.12em]"
+                  className="-mb-[0.24em] -mt-[0.12em] block overflow-hidden whitespace-nowrap pb-[0.24em] pt-[0.12em]"
                 >
                   {line.split(" ").map((word, i, words) => {
                     const idx = wordIndex++;
@@ -288,27 +290,28 @@ export default function WhyChooseUs({ data: customData }: WhyChooseUsProps) {
               {whyData.description}
             </p>
  
-            <div className="grid grid-cols-1 gap-x-[clamp(0.5rem,1vw,2rem)] gap-y-[clamp(1.5rem,4.8vw,6rem)] sm:grid-cols-2">
+            {/* Feature cards */}
+            <div className="grid grid-cols-1 gap-x-[clamp(1rem,1.5vw,2rem)] gap-y-[clamp(1.25rem,2.6vw,3rem)] sm:grid-cols-2">
               {whyData.features.map((feature, i) => (
                 <div
                   key={feature.id}
                   style={delayVar(1150 + i * 200)}
-                  className="nys-w-feature flex items-start gap-[clamp(0.75rem,1.4vw,1.75rem)]"
+                  className="nys-w-feature flex items-stretch gap-[clamp(0.6rem,1vw,1.25rem)]"
                 >
-                  <div className="nys-w-box flex aspect-square w-[clamp(3rem,4.6vw,5.5rem)] shrink-0 items-center justify-center bg-[#FCEFE6] text-[#B35F40]">
+                  <div className="nys-w-box flex aspect-square w-[clamp(2.75rem,4vw,4.5rem)] shrink-0 items-center justify-center self-start bg-[#FCEFE6] text-[#B35F40]">
                     <FeatureIcon name={feature.icon} />
                   </div>
  
                   <span
                     aria-hidden="true"
-                    className="nys-w-vline h-[clamp(3rem,4.6vw,5.5rem)] w-[1.5px] shrink-0 bg-[#B35F40]/70"
+                    className="nys-w-vline w-[1.5px] shrink-0 self-stretch bg-[#B35F40]/70"
                   />
  
-                  <div className="nys-w-text min-w-0">
-                    <h3 className="mb-[0.15em] text-[clamp(0.95rem,1.28vw,1.5rem)] font-bold leading-[1.3] text-[#0F1B33]">
+                  <div className="nys-w-text min-w-0 flex-1">
+                    <h3 className="mb-[0.15em] break-words text-[clamp(0.9rem,1.15vw,1.35rem)] font-bold leading-[1.3] text-[#0F1B33]">
                       {feature.title}
                     </h3>
-                    <p className="text-[clamp(0.85rem,1.1vw,1.25rem)] leading-[1.55] text-[#5B6370]">
+                    <p className="break-words text-[clamp(0.8rem,1vw,1.1rem)] leading-[1.5] text-[#5B6370]">
                       {feature.description}
                     </p>
                   </div>

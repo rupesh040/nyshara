@@ -185,7 +185,7 @@ export default function Collections({ data: customData }: CollectionsProps) {
       id="collections"
       ref={sectionRef}
       data-in={inView ? "true" : "false"}
-      className={`${jost.className} nys-c relative w-full select-none overflow-hidden bg-white py-[clamp(3rem,6vw,8rem)] scroll-mt-20`}
+      className={`${jost.className} nys-c relative w-full mx-auto max-w-[1280px] select-none overflow-hidden bg-white py-[clamp(3rem,6vw,8rem)] scroll-mt-20`}
     >
       <style dangerouslySetInnerHTML={{ __html: COLLECTIONS_CSS }} />
  

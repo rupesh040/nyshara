@@ -556,7 +556,7 @@ export default function Gallery({ data: customData }: GalleryProps) {
       id="gallery"
       ref={sectionRef}
       data-in={inView ? "true" : "false"}
-      className={`${jost.className} nys-g relative w-full select-none overflow-hidden bg-white py-[clamp(2.5rem,4vw,6rem)] scroll-mt-20`}
+      className={`${jost.className} nys-g relative w-full mx-auto max-w-[1280px] select-none overflow-hidden bg-white py-[clamp(2.5rem,4vw,6rem)] scroll-mt-20`}
     >
       <style dangerouslySetInnerHTML={{ __html: GALLERY_CSS }} />
  
