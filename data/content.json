@@ -1,0 +1,319 @@
+{
+  "Nyshara": {
+    "templateComponents": {
+      "template-1": {
+        "shared": {
+          "Header": "NysharaHeader1",
+          "Footer": "NysharaFooter1"
+        },
+        "pages": {
+          "home": {
+            "components": [
+              {
+                "key": "Header",
+                "component": "NysharaHeader1"
+              },
+              {
+                "key": "Hero",
+                "component": "NysharaHero1"
+              },
+              {
+                "key": "About",
+                "component": "NysharaAbout1"
+              },
+              {
+                "key": "Collections",
+                "component": "NysharaCollections1"
+              },
+              {
+                "key": "WhyChooseUs",
+                "component": "NysharaWhyChooseUs1"
+              },
+              {
+                "key": "Gallery",
+                "component": "NysharaGallery1"
+              },
+              {
+                "key": "Testimonial",
+                "component": "NysharaTestimonial1"
+              },
+              {
+                "key": "Footer",
+                "component": "NysharaFooter1"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "sections": {
+      "Header": {
+        "variants": {
+          "NysharaHeader1": {
+            "logo": "/logo.png",
+            "logoAlt": "NYSHARA Jewellery & Fashion",
+            "links": [
+              {
+                "name": "Home",
+                "href": "#home",
+                "active": true
+              },
+              {
+                "name": "About Us",
+                "href": "#about-us",
+                "active": false
+              },
+              {
+                "name": "Our Collections",
+                "href": "#collections",
+                "active": false
+              },
+              {
+                "name": "Why Choose Us",
+                "href": "#why-choose-us",
+                "active": false
+              },
+              {
+                "name": "Gallery",
+                "href": "#gallery",
+                "active": false
+              },
+              {
+                "name": "Testimonials",
+                "href": "#testimonials",
+                "active": false
+              }
+            ],
+            "button": "Contact Us",
+            "buttonHref": "#contact",
+            "mobileMenuAriaLabel": "Toggle navigation menu"
+          }
+        }
+      },
+      "Hero": {
+        "variants": {
+          "NysharaHero1": {
+            "tagline": "TIMELESS ELEGANCE",
+            "headingLine1": "Jewellery for",
+            "headingLine2": "Every Occasion",
+            "heading": "Jewellery for Every Occasion",
+            "watermarkImage": "/flower-motif.png",
+            "watermarkAlt": "Artisanal floral watermark illustration",
+            "heroImage": "/hero.webp",
+            "heroImageAlt": "Handcrafted diamond floral ring and matching earring by NYSHARA"
+          }
+        }
+      },
+      "About": {
+        "variants": {
+          "NysharaAbout1": {
+            "tagline": "ABOUT US",
+            "headingLine1": "The Story Behind",
+            "headingLine2": "NYSHARA.",
+            "heading": "The Story Behind NYSHARA.",
+            "description": "NYSHARA is a celebration of timeless jewellery and modern fashion, bringing together exquisite craftsmanship, elegant designs, and enduring style for every occasion.",
+            "primaryImage": "/about-2.webp",
+            "primaryImageAlt": "Elegantly styled model wearing NYSHARA handcrafted diamond bridal jewellery necklace and chandelier earrings",
+            "secondaryImage": "/about-1.webp",
+            "secondaryImageAlt": "Exquisite diamond floral necklace and teardrop earrings resting on royal blue velvet",
+            "bgCurves": "/about-curves.svg"
+          }
+        }
+      },
+      "Collections": {
+        "variants": {
+          "NysharaCollections1": {
+            "tagline": "OUR COLLECTIONS",
+            "heading": "Explore Our Collections",
+            "items": [
+              {
+                "id": "necklaces",
+                "title": "Necklaces",
+                "image": "/collection-1.webp",
+                "imageAlt": "Handcrafted diamond necklace collection by NYSHARA",
+                "href": "#contact"
+              },
+              {
+                "id": "rings",
+                "title": "Rings",
+                "image": "/collection-2.webp",
+                "imageAlt": "Exquisite diamond ring collection by NYSHARA",
+                "href": "#contact"
+              },
+              {
+                "id": "earrings",
+                "title": "Earrings",
+                "image": "/collection-3.webp",
+                "imageAlt": "Artisanal diamond floral chandelier earring collection by NYSHARA",
+                "href": "#contact"
+              }
+            ]
+          }
+        }
+      },
+      "WhyChooseUs": {
+        "variants": {
+          "NysharaWhyChooseUs1": {
+            "tagline": "WHY CHOOSE US",
+            "headingLine1": "Elegance, Quality &",
+            "headingLine2": "Trust in Every Piece",
+            "heading": "Elegance, Quality & Trust in Every Piece",
+            "description": "We combine timeless craftsmanship, premium materials, and contemporary designs to bring you jewellery that truly lasts.",
+            "image": "/whychooseus.webp",
+            "imageAlt": "NYSHARA luxury diamond necklace and matching earrings on velvet jewellery box with white flowers",
+            "features": [
+              {
+                "id": "premium-quality",
+                "icon": "diamond",
+                "title": "Premium Quality",
+                "description": "Finest materials with expert craftsmanship."
+              },
+              {
+                "id": "unique-designs",
+                "icon": "design",
+                "title": "Unique Designs",
+                "description": "A perfect blend of tradition and modern style."
+              },
+              {
+                "id": "trusted-brand",
+                "icon": "shield",
+                "title": "Trusted Brand",
+                "description": "A name you can rely on for purity and value."
+              },
+              {
+                "id": "dedicated-support",
+                "icon": "support",
+                "title": "Dedicated Support",
+                "description": "Here to assist you at every step."
+              }
+            ]
+          }
+        }
+      },
+      "Gallery": {
+        "variants": {
+          "NysharaGallery1": {
+            "tagline": "GALLERY",
+            "heading": "A Glimpse of Our Creations",
+            "watermarkImage": "/flower-motif.png",
+            "watermarkAlt": "Artisanal floral line art motif",
+            "items": [
+              {
+                "id": "gallery-item-1",
+                "title": "Diamond Floral Necklace Set",
+                "image": "/gallery-1.webp",
+                "imageAlt": "NYSHARA diamond necklace and drop earrings on display bust"
+              },
+              {
+                "id": "gallery-item-2",
+                "title": "Stacked Diamond Rings",
+                "image": "/gallery-2.webp",
+                "imageAlt": "Handcrafted diamond solitaire and pave stack rings on stone pedestal"
+              },
+              {
+                "id": "gallery-item-3",
+                "title": "Diamond Drop Floral Earrings",
+                "image": "/gallery-3.webp",
+                "imageAlt": "Artisanal floral cluster earrings with pear-cut diamond drops"
+              },
+              {
+                "id": "gallery-item-4",
+                "title": "Gold & Diamond Bangle",
+                "image": "/gallery-4.webp",
+                "imageAlt": "Intricate gold and diamond floral lattice bangle bracelet"
+              },
+              {
+                "id": "gallery-item-5",
+                "title": "Emerald Cut Diamond Halo Ring",
+                "image": "/gallery-5.webp",
+                "imageAlt": "Emerald-cut diamond ring with pavé halo setting on raw stone"
+              },
+              {
+                "id": "gallery-item-6",
+                "title": "Diamond Floral Pendant",
+                "image": "/gallery-6.webp",
+                "imageAlt": "Delicate gold chain with diamond floral cluster pendant on silk"
+              }
+            ]
+          }
+        }
+      },
+      "Testimonial": {
+        "variants": {
+          "NysharaTestimonial1": {
+            "tagline": "TESTIMONIALS",
+            "heading": "What Our Clients Say",
+            "watermarkImage": "/flower-motif.png",
+            "watermarkAlt": "Artisanal floral motif",
+            "items": [
+              {
+                "id": "testimonial-1",
+                "quote": "Absolutely stunning collection! The craftsmanship is exceptional and the quality is truly premium. I'm highly satisfied with my purchase.",
+                "author": "Ananya Sharma",
+                "role": "VERIFIED CUSTOMER",
+                "avatar": "/avatar-1.webp",
+                "avatarAlt": "Portrait of Ananya Sharma",
+                "image": "/testimonial.webp",
+                "imageAlt": "Handcrafted gold diamond halo ring on natural stone with delicate white flowers"
+              },
+              {
+                "id": "testimonial-2",
+                "quote": "The diamond necklace I bought for my wedding exceeded all expectations. The sparkle, detailing, and comfort are unmatched.",
+                "author": "Priya Patel",
+                "role": "VERIFIED CUSTOMER",
+                "avatar": "/avatar-1.webp",
+                "avatarAlt": "Portrait of Priya Patel",
+                "image": "/testimonial.webp",
+                "imageAlt": "Handcrafted gold diamond halo ring on natural stone with delicate white flowers"
+              },
+              {
+                "id": "testimonial-3",
+                "quote": "Every piece feels like a bespoke work of art. The packaging, delivery, and personal concierge support were truly five-star.",
+                "author": "Meera Kapoor",
+                "role": "VERIFIED CUSTOMER",
+                "avatar": "/avatar-1.webp",
+                "avatarAlt": "Portrait of Meera Kapoor",
+                "image": "/testimonial.webp",
+                "imageAlt": "Handcrafted gold diamond halo ring on natural stone with delicate white flowers"
+              }
+            ]
+          }
+        }
+      },
+      "Footer": {
+        "variants": {
+          "NysharaFooter1": {
+            "logo": "/logo.png",
+            "logoAlt": "NYSHARA Jewellery & Fashion",
+            "description": "Discover timeless jewellery and modern fashion pieces crafted with elegance, quality and style.",
+            "contactInfo": {
+              "address": "New York, NY 10012",
+              "phone": "+1 000-000-000",
+              "email": "info@xyz.com"
+            },
+            "quickLinksTitle": "Quick Links",
+            "quickLinks": [
+              { "name": "Home", "href": "#home" },
+              { "name": "About Us", "href": "#about-us" },
+              { "name": "Our Collections", "href": "#collections" },
+              { "name": "Why Choose Us", "href": "#why-choose-us" },
+              { "name": "Gallery", "href": "#gallery" },
+              { "name": "Testimonials", "href": "#testimonials" }
+            ],
+            "contactFormTitle": "Get in Touch",
+            "formPlaceholders": {
+              "name": "Your Name",
+              "email": "Your Email",
+              "phone": "Your Phone",
+              "message": "Your Message",
+              "buttonText": "Send Message"
+            },
+            "backgroundImage": "/footer.webp",
+            "bgCurves": "/about-curves.svg",
+            "copyright": "© 2026 Nyshara Jewellery & Fashion. All Rights Reserved. Powered By Lestow"
+          }
+        }
+      }
+    }
+  }
+}
