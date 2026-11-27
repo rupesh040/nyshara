@@ -556,7 +556,7 @@ export default function Gallery({ data: customData }: GalleryProps) {
       id="gallery"
       ref={sectionRef}
       data-in={inView ? "true" : "false"}
-      className={`${jost.className} nys-g relative w-full mx-auto max-w-[1280px] select-none overflow-hidden bg-white py-[clamp(2.5rem,4vw,6rem)] scroll-mt-20`}
+      className={`${jost.className} nys-g relative w-full mx-auto max-w-[1280px] select-none overflow-hidden bg-white pt-12 sm:pt-16 lg:pt-20 pb-6 sm:pb-10 lg:pb-14 scroll-mt-20`}
     >
       <style dangerouslySetInnerHTML={{ __html: GALLERY_CSS }} />
  
@@ -600,7 +600,7 @@ export default function Gallery({ data: customData }: GalleryProps) {
             </div>
  
             <h2
-              className={`${cormorant.className} text-[clamp(2.25rem,5.2vw,6.5rem)] font-semibold leading-[1.05] tracking-[-0.01em] text-[#0F1B33]`}
+              className={`${cormorant.className} text-[clamp(1.9rem,3.6vw,3.25rem)] font-semibold leading-[1.05] tracking-[-0.01em] text-[#0F1B33]`}
             >
               <span className="-mb-[0.24em] -mt-[0.12em] block overflow-hidden pb-[0.24em] pt-[0.12em]">
                 {headingWords.map((word, i) => (

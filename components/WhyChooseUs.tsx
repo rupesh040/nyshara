@@ -234,7 +234,7 @@ export default function WhyChooseUs({ data: customData }: WhyChooseUsProps) {
       id="why-choose-us"
       ref={sectionRef}
       data-in={inView ? "true" : "false"}
-      className={`${inter.className} nys-w relative w-full mx-auto max-w-[1280px] select-none overflow-hidden bg-[#FEFDFC] py-[clamp(3rem,5vw,7rem)] scroll-mt-20`}
+      className={`${inter.className} nys-w relative w-full mx-auto max-w-[1280px] select-none overflow-hidden bg-[#FEFDFC] py-12 sm:py-16 lg:py-20 xl:py-24 scroll-mt-20`}
     >
       <style dangerouslySetInnerHTML={{ __html: WHY_CSS }} />
  
@@ -258,7 +258,7 @@ export default function WhyChooseUs({ data: customData }: WhyChooseUsProps) {
  
             {/* Heading: always exactly two lines (one per headingLine) */}
             <h2
-              className={`${cormorant.className} mb-[clamp(1rem,1.7vw,2.5rem)] text-[clamp(1.75rem,9cqw,6.5rem)] font-semibold leading-[1.05] tracking-[-0.01em] text-[#0F1B33]`}
+              className={`${cormorant.className} mb-[clamp(1rem,1.7vw,2.5rem)] text-[clamp(1.75rem,3.2vw,3rem)] font-semibold leading-[1.05] tracking-[-0.01em] text-[#0F1B33]`}
             >
               {headingLines.map((line, lineIndex) => (
                 <span

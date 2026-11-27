@@ -185,7 +185,7 @@ export default function Collections({ data: customData }: CollectionsProps) {
       id="collections"
       ref={sectionRef}
       data-in={inView ? "true" : "false"}
-      className={`${jost.className} nys-c relative w-full mx-auto max-w-[1280px] select-none overflow-hidden bg-white py-[clamp(3rem,6vw,8rem)] scroll-mt-20`}
+      className={`${jost.className} nys-c relative w-full mx-auto max-w-[1280px] select-none overflow-hidden bg-white py-12 sm:py-16 lg:py-20 xl:py-24 scroll-mt-20`}
     >
       <style dangerouslySetInnerHTML={{ __html: COLLECTIONS_CSS }} />
  
@@ -211,7 +211,7 @@ export default function Collections({ data: customData }: CollectionsProps) {
           </div>
  
           <h2
-            className={`${cormorant.className} text-[clamp(2rem,5.5vw,7rem)] font-semibold leading-[1.05] tracking-[-0.01em] text-[#101A33]`}
+            className={`${cormorant.className} text-[clamp(1.9rem,3.6vw,3.25rem)] font-semibold leading-[1.05] tracking-[-0.01em] text-[#101A33]`}
           >
             <span className="-mb-[0.24em] -mt-[0.12em] block overflow-hidden pb-[0.24em] pt-[0.12em]">
               {headingWords.map((word, i) => (

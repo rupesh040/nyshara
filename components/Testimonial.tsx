@@ -2,6 +2,13 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { Cormorant_Garamond } from "next/font/google";
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: "600",
+  display: "swap",
+});
 import contentData from "@/data/content.json";
 import { TestimonialData } from "@/data/type";
 
@@ -189,26 +196,13 @@ export default function Testimonial({ data: customData }: TestimonialProps) {
       id="testimonials"
       className={`tm-root ${
         isLoaded ? "tm-live" : ""
-      } relative w-full bg-white overflow-hidden mx-auto max-w-[1280px] py-16 sm:py-24 lg:py-28 select-none scroll-mt-20`}
+      } relative w-full bg-white overflow-hidden mx-auto max-w-[1280px] pt-6 sm:pt-10 lg:pt-14 pb-12 sm:pb-16 lg:pb-20 select-none scroll-mt-20`}
     >
       <style>{styles}</style>
 
       <div className="max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8">
         <div className="relative text-center mb-12 sm:mb-16">
-          {testimonialData.watermarkImage && (
-            <div className="tm-a tm-mark absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[360px] pointer-events-none select-none opacity-30 z-0">
-              <div className="tm-spin">
-                <Image
-                  src={testimonialData.watermarkImage}
-                  alt={testimonialData.watermarkAlt || ""}
-                  width={360}
-                  height={204}
-                  className="w-full h-auto object-contain mx-auto"
-                  priority
-                />
-              </div>
-            </div>
-          )}
+          
 
           <div className="relative z-10">
             <div className="inline-flex items-center justify-center gap-3.5 sm:gap-5 mb-4 sm:mb-5">
@@ -226,7 +220,7 @@ export default function Testimonial({ data: customData }: TestimonialProps) {
             </div>
 
             <div className="overflow-hidden pb-1">
-              <h2 className="tm-a tm-title text-[36px] sm:text-[46px] lg:text-[56px] font-normal tracking-[-0.015em] text-[#0F2237] font-serif leading-[1.15]">
+              <h2 className={`${cormorant.className} tm-a tm-title text-[clamp(1.9rem,3.6vw,3.25rem)] font-semibold tracking-[-0.01em] text-[#0F2237] leading-[1.08]`}>
                 {testimonialData.heading}
               </h2>
             </div>

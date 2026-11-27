@@ -32,8 +32,8 @@ const HERO_CSS = `
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes nys-rise {
-  from { transform: translateY(135%); filter: blur(5px); }
-  to   { transform: translateY(0); filter: blur(0); }
+  from { opacity: 0; transform: translateY(110%); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes nys-bloom {
   from { opacity: 0; transform: scale(0.9); filter: blur(8px); }
@@ -112,27 +112,11 @@ export default function Hero({ data: customData }: HeroProps) {
   return (
     <section
       id="home"
-      className={`${jost.className} nys-hero relative w-full select-none overflow-hidden bg-[#F8F6F4] pt-[clamp(2.5rem,4.4vw,6rem)] scroll-mt-20`}
+      className={`${jost.className} nys-hero relative w-full select-none overflow-hidden bg-[#F8F6F4] pt-8 sm:pt-12 lg:pt-16 pb-8 sm:pb-12 lg:pb-14 scroll-mt-20`}
     >
       <style dangerouslySetInnerHTML={{ __html: HERO_CSS }} />
  
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-[clamp(0.75rem,1.5vw,2.5rem)] z-0 flex justify-center"
-      >
-        <div className="nys-bloom w-[clamp(15rem,26vw,28rem)]">
-          <Image
-            src={heroData.watermarkImage}
-            alt={heroData.watermarkAlt}
-            width={420}
-            height={238}
-            className="mx-auto h-auto w-full object-contain opacity-45"
-            priority
-          />
-        </div>
-      </div>
- 
-      <div className="relative z-10 mx-auto max-w-6xl px-4 pb-[clamp(2rem,4.6vw,6rem)] text-center sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 pb-6 sm:pb-8 lg:pb-10 text-center sm:px-6 lg:px-8">
         <div className="mb-[clamp(0.9rem,1.6vw,2.2rem)] flex items-center justify-center gap-[clamp(0.75rem,2.2vw,2.5rem)]">
           <span
             aria-hidden="true"
@@ -148,7 +132,7 @@ export default function Hero({ data: customData }: HeroProps) {
         </div>
  
         <h1
-          className={`${cormorant.className} text-[clamp(2.75rem,1.2rem+6.4vw,8rem)] font-semibold leading-[0.93] tracking-[-0.01em] text-[#101A33]`}
+          className={`${cormorant.className} text-[clamp(2.35rem,4.5vw,4.25rem)] font-semibold leading-[1.05] tracking-[-0.01em] text-[#101A33]`}
         >
           {headingLines.map((line, lineIndex) => (
             <span

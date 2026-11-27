@@ -7,14 +7,13 @@ import { Jost } from "next/font/google";
 import contentData from "@/data/content.json";
 import { HeaderData, NavLink } from "@/data/type";
 
-/* Geometric sans that matches the luxury letterforms */
 const jost = Jost({
   subsets: ["latin"],
   weight: ["400", "500"],
   display: "swap",
 });
 
-const DESKTOP_BREAKPOINT = 1024; // Tailwind `lg`
+const DESKTOP_BREAKPOINT = 1024;
 const EASE = "cubic-bezier(0.65, 0, 0.35, 1)";
 
 interface NavbarProps {
@@ -28,10 +27,8 @@ interface Indicator {
   dir: "left" | "right";
 }
 
-/* Stagger index consumed by .nys-in */
 const stagger = (i: number) => ({ "--i": i } as React.CSSProperties);
 
-/* All motion lives here so the component stays a single drop-in file */
 const NAV_CSS = `
 @keyframes nys-drop {
   from { opacity: 0; transform: translateY(-10px); filter: blur(4px); }
@@ -40,16 +37,13 @@ const NAV_CSS = `
 @keyframes nys-fade  { from { opacity: 0; } to { opacity: 1; } }
 @keyframes nys-glint { from { transform: translateX(-130%); } to { transform: translateX(130%); } }
 
-/* 1. Page-load: items surface outward from the logo */
 .nys-in {
   animation: nys-drop 0.9s cubic-bezier(0.22, 1, 0.36, 1) backwards;
   animation-delay: calc(var(--i, 0) * 80ms + 120ms);
 }
 
-/* 2. Active underline fades in once the links have settled */
 .nys-indicator { animation: nys-fade 0.6s ease 0.9s backwards; }
 
-/* 3. Logo glint: a light streak crosses the mark, like light on a gem */
 .nys-logo::after {
   content: "";
   position: absolute;
@@ -64,7 +58,6 @@ const NAV_CSS = `
   transition: transform 0.9s ease;
 }
 
-/* 4. CTA: soft radial highlight follows the cursor across the button */
 .nys-cta::before {
   content: "";
   position: absolute;
@@ -105,11 +98,9 @@ export default function Navbar({ data: customData }: NavbarProps) {
   const isManualScroll = useRef<boolean>(false);
   const manualScrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
-  // Logo left side 3 links and right side 3 links
   const leftLinks: NavLink[] = headerData.links.slice(0, 3);
   const rightLinks: NavLink[] = headerData.links.slice(3, 6);
 
-  // Dynamically map all sections from data
   const sectionList = useMemo(() => {
     const list: { id: string; name: string }[] = [];
     headerData.links.forEach((link) => {
@@ -128,7 +119,6 @@ export default function Navbar({ data: customData }: NavbarProps) {
     return list;
   }, [headerData]);
 
-  // Scroll detection for shadow / compact padding
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     handleScroll();
@@ -136,7 +126,6 @@ export default function Navbar({ data: customData }: NavbarProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu when entering desktop layout
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= DESKTOP_BREAKPOINT) setIsMobileMenuOpen(false);
@@ -145,7 +134,6 @@ export default function Navbar({ data: customData }: NavbarProps) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Real-time scrollspy: automatically highlights the section currently visited / viewed
   useEffect(() => {
     const handleScrollSpy = () => {
       if (isManualScroll.current) return;
@@ -154,7 +142,6 @@ export default function Navbar({ data: customData }: NavbarProps) {
       const windowHeight = window.innerHeight;
       const docHeight = document.documentElement.scrollHeight;
 
-      // Bottom of page: highlight Contact Us / footer
       if (scrollY + windowHeight >= docHeight - 60) {
         const contactName = headerData.button;
         if (contactName) {
@@ -164,7 +151,6 @@ export default function Navbar({ data: customData }: NavbarProps) {
         }
       }
 
-      // Top of page: highlight Home
       if (scrollY < 80) {
         const homeName = headerData.links[0]?.name || "Home";
         setActiveItem(homeName);
@@ -172,7 +158,6 @@ export default function Navbar({ data: customData }: NavbarProps) {
         return;
       }
 
-      // Reverse search: find the active section in view (nav offset ~140px)
       const navOffset = 140;
       let matchedName = "";
 
@@ -205,8 +190,6 @@ export default function Navbar({ data: customData }: NavbarProps) {
     };
   }, [sectionList, headerData]);
 
-  /* Measure the active link using getBoundingClientRect relative to navWrapRef
-     to guarantee pixel precision across links on both sides of the centered logo */
   const updateIndicator = useCallback(() => {
     const wrap = navWrapRef.current;
     const el = linkRefs.current[activeItem];
@@ -214,7 +197,7 @@ export default function Navbar({ data: customData }: NavbarProps) {
       setIndicator(null);
       return;
     }
-    if (wrap.clientWidth === 0) return; // desktop layout hidden
+    if (wrap.clientWidth === 0) return;
 
     const wrapRect = wrap.getBoundingClientRect();
     const elRect = el.getBoundingClientRect();
@@ -257,7 +240,6 @@ export default function Navbar({ data: customData }: NavbarProps) {
     };
   }, [updateIndicator]);
 
-  // Smooth-scroll navigation
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string,
@@ -294,14 +276,12 @@ export default function Navbar({ data: customData }: NavbarProps) {
     }
   };
 
-  // CTA highlight follows the pointer
   const handleCtaMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const r = e.currentTarget.getBoundingClientRect();
     e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
     e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
   };
 
-  /* Desktop link with vertical text-roll on hover and active/visited visual highlight */
   const renderDesktopLink = (link: NavLink, order: number) => {
     const isActive = activeItem === link.name;
     const isVisited = visitedSections.has(link.name);
@@ -317,11 +297,9 @@ export default function Navbar({ data: customData }: NavbarProps) {
         aria-current={isActive ? "location" : undefined}
         data-visited={isVisited ? "true" : "false"}
         style={stagger(order)}
-        className={`nys-in group relative inline-block whitespace-nowrap py-1.5 text-[15px] font-medium transition-colors duration-300 ${
+        className={`nys-in group relative inline-block shrink-0 whitespace-nowrap py-1.5 text-[15px] font-medium transition-colors duration-300 ${
           isActive
             ? "text-[#C2806D]"
-            : isVisited
-            ? "text-[#1E2229] hover:text-[#C2806D]"
             : "text-[#1E2229] hover:text-[#C2806D]"
         }`}
       >
@@ -360,22 +338,19 @@ export default function Navbar({ data: customData }: NavbarProps) {
     >
       <style dangerouslySetInnerHTML={{ __html: NAV_CSS }} />
 
-      <div className="mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
-        {/* ───────── Desktop (>= lg) ───────── */}
+      <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-6">
         <div
           ref={navWrapRef}
-          className="relative hidden w-full items-center lg:grid lg:grid-cols-[1fr_auto_1fr]"
+          className="relative hidden w-full items-center lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]"
         >
-          {/* Left links: 3 links */}
-          <nav className="flex items-center justify-start gap-5 min-[1140px]:gap-7 min-[1300px]:gap-9">
+          <nav className="flex min-w-0 items-center justify-end gap-x-[44px]">
             {leftLinks.map((link, i) =>
               renderDesktopLink(link, leftLinks.length - i)
             )}
           </nav>
 
-          {/* Centered brand logo */}
           <div
-            className="nys-in flex items-center justify-center px-4 sm:px-6"
+            className="nys-in flex shrink-0 items-center justify-center px-[clamp(16px,2vw,28px)]"
             style={stagger(0)}
           >
             <Link
@@ -386,17 +361,16 @@ export default function Navbar({ data: customData }: NavbarProps) {
               <Image
                 src={headerData.logo}
                 alt={headerData.logoAlt}
-                width={340}
-                height={64}
-                className="h-10 sm:h-11 md:h-12 w-auto object-contain"
+                width={580}
+                height={72}
+                className="h-20 w-auto object-contain"
                 priority
               />
             </Link>
           </div>
 
-          {/* Right links (3 links) + CTA Button */}
-          <div className="flex items-center justify-end gap-5 min-[1140px]:gap-7 min-[1300px]:gap-9">
-            <nav className="flex items-center gap-5 min-[1140px]:gap-7 min-[1300px]:gap-9">
+          <div className="flex min-w-0 items-center gap-x-[clamp(16px,1.8vw,24px)]">
+            <nav className="flex items-center gap-x-[42px]">
               {rightLinks.map((link, i) => renderDesktopLink(link, i + 1))}
             </nav>
 
@@ -407,7 +381,7 @@ export default function Navbar({ data: customData }: NavbarProps) {
               }
               onMouseMove={handleCtaMove}
               style={stagger(rightLinks.length + 1)}
-              className={`nys-in nys-cta relative ml-2 inline-flex items-center justify-center overflow-hidden whitespace-nowrap rounded-full bg-[#C2806D] px-6 py-2.5 text-[14px] font-medium text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#B87461] hover:shadow-[0_12px_24px_-10px_rgba(194,128,109,0.95)] active:translate-y-0 active:scale-[0.97] ${
+              className={`nys-in nys-cta relative ml-auto inline-flex shrink-0 items-center justify-center overflow-hidden whitespace-nowrap rounded-full bg-[#C2806D] px-5 py-2.5 text-[14px] font-medium text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#B87461] hover:shadow-[0_12px_24px_-10px_rgba(194,128,109,0.95)] active:translate-y-0 active:scale-[0.97] ${
                 isCtaActive
                   ? "ring-2 ring-[#C2806D] ring-offset-2 shadow-[0_12px_24px_-8px_rgba(194,128,109,0.85)]"
                   : ""
@@ -417,7 +391,6 @@ export default function Navbar({ data: customData }: NavbarProps) {
             </Link>
           </div>
 
-          {/* Active underline: smoothly stretches and slides toward active link */}
           {indicator && (
             <span
               aria-hidden="true"
@@ -435,7 +408,6 @@ export default function Navbar({ data: customData }: NavbarProps) {
           )}
         </div>
 
-        {/* ───────── Mobile & tablet (< lg) ───────── */}
         <div className="flex w-full items-center justify-between lg:hidden">
           <div className="nys-in" style={stagger(0)}>
             <Link
@@ -446,9 +418,9 @@ export default function Navbar({ data: customData }: NavbarProps) {
               <Image
                 src={headerData.logo}
                 alt={headerData.logoAlt}
-                width={160}
-                height={45}
-                className="h-9 w-auto object-contain sm:h-10"
+                width={240}
+                height={68}
+                className="h-11 w-auto object-contain sm:h-12"
                 priority
               />
             </Link>
@@ -466,7 +438,6 @@ export default function Navbar({ data: customData }: NavbarProps) {
               {headerData.button}
             </Link>
 
-            {/* Hamburger morphs into a cross */}
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -503,7 +474,6 @@ export default function Navbar({ data: customData }: NavbarProps) {
           </div>
         </div>
 
-        {/* Mobile menu: height eases open, links follow one by one */}
         <div
           id="nys-mobile-menu"
           className={`grid transition-[grid-template-rows,opacity,visibility] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden ${
@@ -516,7 +486,6 @@ export default function Navbar({ data: customData }: NavbarProps) {
             <div className="mt-3 flex flex-col gap-1 border-t border-gray-100 pb-4 pt-3">
               {headerData.links.map((link, i) => {
                 const isActive = activeItem === link.name;
-                const isVisited = visitedSections.has(link.name);
                 return (
                   <div
                     key={link.name}

@@ -145,8 +145,7 @@ const ABOUT_CSS = `
 }
  
 @media (hover: hover) and (pointer: fine) {
-  .nys-frame { cursor: none; }
-  .nys-frame:hover .nys-loupe { opacity: 1; scale: 1; }
+  .nys-frame { cursor: default; }
 }
  
 @media (prefers-reduced-motion: reduce) {
@@ -256,7 +255,7 @@ export default function About({ data: customData }: AboutProps) {
       id="about-us"
       ref={sectionRef}
       data-in={inView ? "true" : "false"}
-      className={`${jost.className} nys-about relative max-w-[1280px] mx-auto w-full select-none overflow-hidden bg-[#FAF9FB] py-[clamp(3rem,5vw,7rem)] scroll-mt-20`}
+      className={`${jost.className} nys-about relative max-w-[1280px] mx-auto w-full select-none overflow-hidden bg-[#FAF9FB] py-12 sm:py-16 lg:py-20 xl:py-24 scroll-mt-20`}
     >
       <style dangerouslySetInnerHTML={{ __html: ABOUT_CSS }} />
  
@@ -292,7 +291,7 @@ export default function About({ data: customData }: AboutProps) {
             </div>
  
             <h2
-              className={`${cormorant.className} mb-[clamp(2rem,4vw,5rem)] text-[clamp(1.75rem,3.8vw,4.5rem)] font-semibold leading-[1.05] tracking-[-0.01em] text-[#101A33]`}
+              className={`${cormorant.className} mb-[clamp(1.5rem,3vw,3.5rem)] text-[clamp(1.9rem,3.6vw,3.25rem)] font-semibold leading-[1.05] tracking-[-0.01em] text-[#101A33]`}
             >
               {headingLines.map((line, lineIndex) => (
                 <span
@@ -323,7 +322,7 @@ export default function About({ data: customData }: AboutProps) {
               sizes="(max-width: 1024px) 100vw, 40vw"
               wipe="up"
               delay={700}
-              className="aspect-[457/558] w-full max-w-[457px] lg:ml-[28%] lg:w-[76.7%] lg:max-w-none"
+              className="aspect-[347/423] w-full max-w-[420px] self-start lg:self-end lg:ml-auto"
             />
           </div>
  
